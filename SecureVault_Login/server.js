@@ -254,4 +254,14 @@ app.get('/register', function(req,res){
 app.get('/img.png', function (req, res) {
   res.sendFile(__dirname+ '/img.png');
 });
+app.get('/img2.png', function (req, res) {
+  res.sendFile(__dirname+ '/img2.png');
+});
+app.get('/home.png', function (req, res) {
+  res.sendFile(__dirname+ '/home.png');
+});
+
+app.get('/freelancer.min.css', function (req, res) {
+  res.sendFile(__dirname+ '/freelancer.min.css');
+});
 	app.listen(8000);
