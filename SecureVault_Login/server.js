@@ -130,13 +130,14 @@ app.post('/create_user', function (req, res) {
    console.log("inside server");
    var username = req.body.username;
    var password = req.body.password;
+   var user_type = req.body.user_type;
    console.log(req.body.username);
    console.log(req.body.password);
    //var salt = crypto.randomBytes(128).toString('hex');
    var dbString = hash(password);
    //var salt = crypto.randomBytes(128).toString('hex');
    //var dbString = hash(password, salt);
-   var sql = "INSERT INTO `user` (`email`,`password`) values ('"+username+"', '"+dbString+"');";
+   var sql = "INSERT INTO `user` (`email`,`password`,`usertype`) values ('"+username+"', '"+dbString+"','"+user_type+"');";
    
    	console.log(sql);
       connection.query(sql, function (err, result){
@@ -194,6 +195,7 @@ app.get('/check-login', function (req, res) {
            if (err) {
               res.status(500).send(err.toString());
            } else {
+            sessionStorage.setItem("username", result.rows[0].username);
               res.send(result.rows[0].username);    
            }
        });

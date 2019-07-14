@@ -23,15 +23,20 @@ console.log(register);
         // Make the request
         var user_name = document.getElementById('username').value;
         var pass_word = document.getElementById('password').value;
+        var user_type = document.querySelector('input[name = user]:checked').value;
+        
+        
+          
         console.log(user_name);
         console.log(pass_word);
+        console.log(user_type);
         /*var user_detail ={
           username: user_name,
           password: pass_word
         };*/
         request.open('POST', '/create_user', true);
         request.setRequestHeader('Content-Type', 'application/json');
-        request.send(JSON.stringify({username: user_name,password: pass_word}));  
+        request.send(JSON.stringify({username: user_name,password: pass_word,user_type:user_type}));  
         register.value = 'Registering...';
     
     };

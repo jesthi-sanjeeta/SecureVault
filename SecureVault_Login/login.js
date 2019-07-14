@@ -18,12 +18,13 @@ submit.onclick = function() {
 };
 var username = document.getElementById('username').value;
 var password = document.getElementById('password').value;
+var user_type = document.querySelector('input[name = user]:checked').value;
 console.log(username);
 console.log(password);
 //var name = nameInput.value;
 request.open('POST','/login',true);
 request.setRequestHeader('Content-Type', 'application/json');
-request.send(JSON.stringify({username: username,password: password}));
+request.send(JSON.stringify({username: username,password: password,user_type:user_type}));
 };
 
 /*var register = document.getElementById('register_btn');
